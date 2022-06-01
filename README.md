@@ -1,6 +1,6 @@
 # 2022辅修数据结构课程设计
 ## 构建
-### Use GCC+CMake
+### Use GCC/Clang+CMake
 ```shell
 git clone https://github.com/pcbcos/wzip
 cd wzip
