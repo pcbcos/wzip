@@ -11,6 +11,7 @@ using namespace std;
 
 
 auto main(int argc, const char *argv[]) -> int {
+    assert(("需要提供输入文件和输出文件路径",argc==3));
     HuffmanZip w;
 
     ifstream ifs;
