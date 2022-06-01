@@ -16,7 +16,7 @@ auto main(int argc, const char *argv[]) -> int {
 
     ifstream ifs;
     ifs.open(argv[1], ifstream::in);
-    ifs.unsetf(ios::skipws);
+    ifs.unsetf(ios::skipws);//不跳过回车和空格符号
     ifs >> w;
     ifs.close();
     w.GenerateHuffmanTreeFromFreq();
