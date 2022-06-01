@@ -16,7 +16,7 @@ auto main(int argc, const char *argv[]) -> int {
     ifstream ifs;
     ifs.open(argv[1], ifstream::in);
     ifs.unsetf(ios::skipws);
-    ifs>>w;
+    ifs >> w;
     ifs.close();
     w.GenerateHuffmanTreeFromFreq();
 
