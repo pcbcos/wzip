@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.16)
+project(wzip)
+
+set(CMAKE_CXX_STANDARD 20)
+include_directories(inc)
+aux_source_directory(src impl)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+add_executable(wzip wzip.cpp ${impl})
+add_executable(unwzip unwzip.cpp ${impl})
