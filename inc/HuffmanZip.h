@@ -29,7 +29,7 @@ public:
         text = "";
     };
 
-    friend ofstream &operator<<(ofstream &ofs, const HuffmanZip &huff);
+    friend ofstream &operator<<(ofstream &ofs, HuffmanZip &huff);
 
     friend ifstream &operator>>(ifstream &ifs, HuffmanZip &huff);
 
@@ -38,6 +38,10 @@ public:
     void operator<<(char c);
 
     auto test();
+
+    auto getZipRate() const->float;
+
+    void setZipRate(float zipRate);
 
 private:
     vector<uint32_t> freq;
@@ -48,10 +52,11 @@ private:
 
     code dict[128]{};
 
+    float ZipRate{};
+
     metadata MATE{};
 
     pNode HuffmanRoot;
-
 };
 
 

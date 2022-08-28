@@ -48,7 +48,7 @@ auto HuffmanZip::GenerateHuffmanTreeFromFreq() -> void {
     pre(HuffmanRoot, make_pair(0, 0));//生成字典
 }
 
-ofstream &operator<<(ofstream &ofs, const HuffmanZip &huff) {
+ofstream &operator<<(ofstream &ofs, HuffmanZip& huff) {
     //先写入字典大小
     ofs.write((char *) &huff.MATE.dict_size_bit, 8);
     ofs.seekp(16);
@@ -97,7 +97,7 @@ ofstream &operator<<(ofstream &ofs, const HuffmanZip &huff) {
         //满了
         if (space == 0) {
             for (auto i = 0; i < 1024 / 64; i++) {
-                s.push_back((bit_set&ullmask).to_ullong());
+                s.push_back((bit_set & ullmask).to_ullong());
                 bit_set >>= 64;
             }
             bit_set.reset();
@@ -121,7 +121,7 @@ ofstream &operator<<(ofstream &ofs, const HuffmanZip &huff) {
     auto count = (1024 - space) / 64;//计算剩余的64位单元
     //压栈
     for (auto i = 0; i < count; i++) {
-        s.push_back((bit_set&ullmask).to_ullong());
+        s.push_back((bit_set & ullmask).to_ullong());
         bit_set >>= 64;
     }
     bit_set.reset();//清0
@@ -133,6 +133,7 @@ ofstream &operator<<(ofstream &ofs, const HuffmanZip &huff) {
     space = 1024;
     ofs.seekp(8);
     ofs.write((char *) &sz, 8);
+    huff.setZipRate((float) sz / (huff.text.length() * 8));
     return ofs;
 }
 
@@ -162,4 +163,12 @@ ifstream &operator>>(ifstream &ifs, HuffmanZip &huff) {
         ifs >> c;
     }
     return ifs;
+}
+
+auto HuffmanZip::getZipRate() const -> float {
+    return ZipRate;
+}
+
+void HuffmanZip::setZipRate(float zipRate) {
+    ZipRate=zipRate;
 }

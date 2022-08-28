@@ -5,6 +5,7 @@
 #include <fstream>
 #include "datatypes.h"
 #include "EqLenZip.h"
+#include <iomanip>
 
 using std::ifstream;
 auto main(int argc, const char *argv[]) -> int {
@@ -21,5 +22,6 @@ auto main(int argc, const char *argv[]) -> int {
     ofs<<eqLenZip;
     ofs.close();
 
+    std::cout<<"Compression Rate="<<std::setprecision(2)<<eqLenZip.getZipRate()<<std::endl;
     return 0;
 }

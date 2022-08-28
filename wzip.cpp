@@ -1,18 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <queue>
-#include <memory>
-#include <bitset>
 #include "HuffmanZip.h"
-#include "datatypes.h"
 
-using namespace std;
+#include <iomanip>
+
+using std::ifstream, std::ofstream;
 
 
 auto main(int argc, const char *argv[]) -> int {
 
-    assert(("需要提供输入文件和输出文件路径",argc==3));
+    assert(("需要提供输入文件和输出文件路径", argc == 3));
     HuffmanZip w;
 
     ifstream ifs;
@@ -27,6 +24,9 @@ auto main(int argc, const char *argv[]) -> int {
     ofs.open(argv[2], ios::binary);
     ofs << w;//写二进制文件
     ofs.close();
+
+    std::cout << "Compression Rate=" << setprecision(2) << w.getZipRate() << std::endl;
+
 
     return 0;
 

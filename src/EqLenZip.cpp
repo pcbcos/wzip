@@ -9,7 +9,7 @@
 
 using namespace std;
 
-std::ofstream &operator<<(std::ofstream &ofs, const EqLenZip &eqzip) {
+std::ofstream &operator<<(std::ofstream &ofs, EqLenZip &eqzip) {
 
     //先写入字典大小
     ofs.write((char *) &eqzip.MATE.dict_size_bit, 8);
@@ -76,7 +76,7 @@ std::ofstream &operator<<(std::ofstream &ofs, const EqLenZip &eqzip) {
         s.pop_back();
     }
     space = 1024;
-
+    eqzip.setZipRate((float) eqzip.MATE.zipped_text_size_bit / (eqzip.text.length() * 8));
     return ofs;
 
 }
@@ -122,6 +122,15 @@ void EqLenZip::GenerateDict() {
     }
     MATE.dict_size_bit = kind.size() * 32;
     MATE.zipped_text_size_bit = text.size() * len;
+}
+
+auto EqLenZip::getZipRate() -> float {
+    return ZipRate;
+
+}
+
+void EqLenZip::setZipRate(float zipRate) {
+    ZipRate = zipRate;
 }
 
 

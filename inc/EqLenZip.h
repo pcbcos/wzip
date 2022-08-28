@@ -17,7 +17,7 @@ public:
         text="";
     };
 
-    friend std::ofstream& operator<<(std::ofstream& ofs,const EqLenZip& eqzip);
+    friend std::ofstream& operator<<(std::ofstream& ofs,EqLenZip& eqzip);
 
     friend std::ifstream & operator>>(std::ifstream& ifs,EqLenZip& Eqzip);
 
@@ -26,8 +26,13 @@ public:
     void operator<<(std::string_view str);
 
     void test();
+
+    auto getZipRate()->float;
+
 private:
     void GenerateDict();
+
+    void setZipRate(float zipRate);
 private:
 
     std::set<char> kind;//出现过的字符
@@ -37,6 +42,8 @@ private:
     code dict[128]{};//生成的字典
 
     metadata MATE{};//元数据
+
+    float ZipRate{};
 
 
 
