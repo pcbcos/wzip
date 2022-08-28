@@ -21,12 +21,23 @@ cd bin/Debug #可执行文件所在路径
 ```
 
 ## 使用方法
-### 压缩
+
+### 压缩(使用哈夫曼编码)
 ```shell
 wzip.exe [input filename] [output filename]
 ```
 
-### 解压缩
+### 解压缩((使用哈夫曼编码))
 ```shell
 unwzip.exe [input filename] [output filename]
+```
+
+### 压缩(使用等长编码)
+```shell
+Eqwzip.exe [input filename] [output filename]
+```
+
+### 解压缩(使用等长编码)
+```shell
+unEqwzip.exe [input filename] [output filename]
 ```
