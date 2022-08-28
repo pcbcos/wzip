@@ -25,7 +25,8 @@ auto main(int argc, const char *argv[]) -> int {
     ofs << w;//写二进制文件
     ofs.close();
 
-    std::cout << "Compression Rate=" << setprecision(2) << w.getZipRate() << std::endl;
+    std::cout << "Compression Rate=" << setprecision(4) << setiosflags(std::ios::showpoint)
+              << (float) w.getZipRate() * 100 << std::endl;
 
 
     return 0;

@@ -132,8 +132,9 @@ ofstream &operator<<(ofstream &ofs, HuffmanZip& huff) {
     }
     space = 1024;
     ofs.seekp(8);
+    huff.MATE.zipped_text_size_bit=sz;
     ofs.write((char *) &sz, 8);
-    huff.setZipRate((float) sz / (huff.text.length() * 8));
+    huff.setZipRate((float) (sz+huff.MATE.dict_size_bit) / (huff.text.length() * 8));
     return ofs;
 }
 

@@ -76,7 +76,7 @@ std::ofstream &operator<<(std::ofstream &ofs, EqLenZip &eqzip) {
         s.pop_back();
     }
     space = 1024;
-    eqzip.setZipRate((float) eqzip.MATE.zipped_text_size_bit / (eqzip.text.length() * 8));
+    eqzip.setZipRate((float) (eqzip.MATE.zipped_text_size_bit+eqzip.MATE.dict_size_bit) / (eqzip.text.length() * 8));
     return ofs;
 
 }
