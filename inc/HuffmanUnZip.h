@@ -9,7 +9,7 @@
 #include "fstream"
 #include <cassert>
 
-using namespace std;
+using std::ifstream,std::ofstream,std::string;
 
 class HuffmanUnZip {
 public:

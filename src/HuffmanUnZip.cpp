@@ -3,7 +3,7 @@
 //
 
 #include "HuffmanUnZip.h"
-
+using std::make_shared;
 inline bool getBit(uint64_t data, uint8_t pos) {
     return (data >> (64 - pos)) & 1;
 }

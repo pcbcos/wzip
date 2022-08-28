@@ -10,6 +10,7 @@
 using namespace std;
 
 std::ofstream &operator<<(std::ofstream &ofs, const EqLenZip &eqzip) {
+
     //先写入字典大小
     ofs.write((char *) &eqzip.MATE.dict_size_bit, 8);
     //写入压缩后的文本大小
@@ -88,9 +89,9 @@ std::ifstream &operator>>(ifstream &ifs, EqLenZip &eqzip) {
         eqzip << c;
         ifs >> c;
     }
+    eqzip.GenerateDict();
     return ifs;
 }
-
 
 void EqLenZip::operator<<(char c) {
     text.push_back(c);

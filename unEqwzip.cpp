@@ -1,16 +1,15 @@
 //
-// Created by wengz on 2022/5/31.
+// Created by wengz on 2022/8/28.
 //
 #include <iostream>
 #include <fstream>
-#include "HuffmanUnZip.h"
+#include "EqLenUnZip.h"
 
-using std::ios;
-auto main(int argc, const char *argv[]) -> int {
+auto main(int argc, const char *argv[])->int{
     assert(("需要提供输入文件和输出文件路径",argc==3));
     ifstream ifs;
-    ifs.open(argv[1], ios::binary);
-    HuffmanUnZip uw;
+    ifs.open(argv[1], std::ios::binary);
+    EqLenUnZip uw;
     ifs >> uw;
     ifs.close();
 
